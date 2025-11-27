@@ -40,7 +40,7 @@ camera1.add_camera_to_scene(scene);
 
 data_path = dataset.render_simple_block_path() 
 add_mesh_to_scene(scene, data_path)
-#add_mesh_to_scene(scene, data_path, world_position=[-2.0, -10.0, -2.0], scale=500)
+add_mesh_to_scene(scene, data_path, world_position=[-2.0, -10.0, -2.0], scale=500)
 
 # Lights - to be added later
 
@@ -52,12 +52,13 @@ number_of_samples = 50; # for anti-aliasing
 
 # NANOBIND TESTS    
 from superfastcode import cpp_render_scene
-#nanobind_results = timeit.repeat("cpp_render_scene(image_height, image_width, number_of_samples, scene.scene_connectivity, scene.scene_coords, scene.scene_face_colors, scene.scene_camera_center, scene.scene_pixel_00_center, scene.scene_matrix_pixel_spacing)", globals=globals(), repeat=5, number=1)
-#print(nanobind_results)
-#print(f"Min: {min(nanobind_results)} max: {max(nanobind_results)} average:{sum(nanobind_results)/5}")
+nanobind_results = timeit.repeat("cpp_render_scene(image_height, image_width, number_of_samples, scene.scene_connectivity, scene.scene_coords, scene.scene_face_colors, scene.scene_camera_center, scene.scene_pixel_00_center, scene.scene_matrix_pixel_spacing)", globals=globals(), repeat=2, number=1)
+print(nanobind_results)
+print(f"Min: {min(nanobind_results)} max: {max(nanobind_results)} average:{sum(nanobind_results)/5}")
 
 # PYBIND TESTS
 from superfastcodePybind import cpp_render_scene_pybind
-pybind_results = timeit.repeat("cpp_render_scene_pybind(image_height, image_width, number_of_samples, scene.scene_connectivity, scene.scene_coords, scene.scene_face_colors, scene.scene_camera_center, scene.scene_pixel_00_center, scene.scene_matrix_pixel_spacing)", globals=globals(), repeat=5, number=1,)
-print(pybind_results)
-print(f"Min: {min(pybind_results)} max: {max(pybind_results)} average:{sum(pybind_results)/5}")
+#pybind_results = timeit.repeat("cpp_render_scene_pybind(image_height, image_width, number_of_samples, scene.scene_connectivity, scene.scene_coords, scene.scene_face_colors, scene.scene_camera_center, scene.scene_pixel_00_center, scene.scene_matrix_pixel_spacing)", globals=globals(), repeat=5, number=1,)
+#print(pybind_results)
+#print(f"Min: {min(pybind_results)} max: {max(pybind_results)} average:{sum(pybind_results)/5}")
+

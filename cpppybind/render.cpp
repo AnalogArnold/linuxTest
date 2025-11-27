@@ -1,9 +1,14 @@
+#include <fstream>
+#include <iostream>
+#define _USE_MATH_DEFINES
+#include <cmath>
+
+
 #include "render.h"
 #include "hit_record.h"
 #include "ray_intersection.h"
 #include "math_utils.h"
-#include <fstream>
-#include <iostream>
+
 
 
 inline EiVector3d get_face_color(Eigen::Index minRowIndex,

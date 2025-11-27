@@ -7,11 +7,8 @@
 #include <array>
 #include <vector>
 
-
-
 #include "eigen_types.h"
 #include "render.h"
-
 
 #include <pybind11/pybind11.h>
 #include <pybind11/eigen.h>
@@ -38,8 +35,6 @@ void render_scene(const int image_height,
         Eigen::Ref<const EiVector3d> pixel_00_center = pixel_00_centers[camera_idx];
         Eigen::Ref<const Eigen::Matrix<double, 2, 3, Eigen::StorageOptions::RowMajor>> matrix_pixel_spacing = matrix_pixel_spacings[camera_idx];
 
-        // Get bytes from the render function and pass back to Python to write it to a file from there
-        //return render_ppm_image(test_camera, connectivity, node_coords);
         render_ppm_image(camera_center, pixel_00_center, matrix_pixel_spacing, scene_connectivity, scene_coords, scene_face_colors, image_height, image_width, number_of_samples);
     }
 }

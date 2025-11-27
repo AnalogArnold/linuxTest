@@ -1,8 +1,8 @@
 #pragma once // Header guard instead of ifndef
 
+#define _USE_MATH_DEFINES
 #include <cmath>
 #include <random>
-//#include <corecrt_math_defines.h> // Otherwise M_PI doesn't work in VS. cmath alone works in CLion, though.
 #include "eigen_types.h"
 
 inline double degreesToRadians(double angleDeg) {
